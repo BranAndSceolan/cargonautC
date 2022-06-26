@@ -1,0 +1,30 @@
+###
+POST http://localhost:8008/vehicle/create
+Content-Type: application/json
+sessionid: 1111
+cuid: system
+
+{
+  "type": "standard car",
+  "numberOfSeats": 4,
+  "notes": "looks ugly, but moves"
+}
+
+###
+
+GET http://localhost:8008/vehicle/getAll
+sessionid: 1111
+cuid: system
+
+###
+
+GET http://localhost:8008/vehicle/findById/62b6e23647710726ec73f323
+sessionid: 1111
+cuid: system
+
+###
+
+DELETE http://localhost:8008/vehicle/delete/62b6e23647710726ec73f323
+Content-Type: application/json
+sessionid: 1111
+cuid: system

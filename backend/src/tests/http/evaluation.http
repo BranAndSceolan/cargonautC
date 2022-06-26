@@ -1,0 +1,30 @@
+###
+POST http://localhost:8008/eval/create
+Content-Type: application/json
+sessionid: 1111
+cuid: system
+
+{
+  "result": 5,
+  "ride": "620cbeaecc90432d95b598a0",
+  "user": "620cbeaecc90432d95b598a7"
+}
+
+###
+
+GET http://localhost:8008/eval/getAll
+sessionid: 1111
+cuid: system
+
+###
+
+GET http://localhost:8008/eval/findById/62b6dd5647710726ec73f309
+sessionid: 1111
+cuid: system
+
+###
+
+DELETE http://localhost:8008/eval/delete/62b6dd5647710726ec73f309
+Content-Type: application/json
+sessionid: 1111
+cuid: system

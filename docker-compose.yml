@@ -1,0 +1,16 @@
+version: '3.0'
+services:
+  mongo:
+    image: mongo
+    container_name: cargonaut_mongo
+    ports:
+      - "27017:27017"
+  node:
+    build: ./backend
+    container_name: cargonaut
+    ports:
+      - "8008:8008"
+    depends_on:
+      - mongo
+    environment:
+      - "NODE_ENV=${NODE_ENV}"

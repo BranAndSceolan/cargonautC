@@ -1,0 +1,45 @@
+###
+POST http://localhost:8008/req/create
+Content-Type: application/json
+sessionid: 1111
+cuid: system
+
+{
+"date": "1-12-2022",
+"user": "620cbeaecc90432d95b598a0",
+"cargo": "I have only a sports bag with me."
+}
+
+###
+
+###
+POST http://localhost:8008/req/update/62b1b8fbd87d2267525e9e65
+Content-Type: application/json
+sessionid: 1111
+cuid: system
+
+{
+"date": "1-12-2022",
+"user": "620cbeaecc90432d95b598a0",
+"cargo": "I have only a sports bag with me."
+"requestStatus": "accepted"
+"trackingStatus": "pending"
+}
+
+###
+GET http://localhost:8008/req/getAll
+sessionid: 1111
+cuid: system
+
+###
+
+GET http://localhost:8008/req/findById/62b6df8847710726ec73f30f
+sessionid: 1111
+cuid: system
+
+###
+
+DELETE http://localhost:8008/req/delete/62b6df8847710726ec73f30f
+Content-Type: application/json
+sessionid: 1111
+cuid: system

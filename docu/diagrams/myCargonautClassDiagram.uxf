@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>710</x>
+      <y>130</y>
+      <w>310</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>User
+--
+name : String
+birthdate : date
+eMail : email (check if valid!)
+password : String
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>250</y>
+      <w>210</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>Vehicle
+--
+type : ENUM
+spaceWidth: 
+spaceHeight:
+spaceLenght:
+numberOfSeats: number
+decription/notes: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>640</y>
+      <w>350</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Ride
+--
+date: date
+from: String
+to: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>390</x>
+      <y>340</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Evaluation
+--
+result: Number 0-5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>230</x>
+      <y>640</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Tracking
+--
+trackinStatus: ENUM
+dateLastStatusChange: </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1100</x>
+      <y>310</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Request
+--
+requestStatus :ENUM
+date: date</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1080</x>
+      <y>620</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Cargo
+--
+type: ENUM
+notes: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>170</y>
+      <w>450</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+
+&lt; belongs to</panel_attributes>
+    <additional_attributes>10.0;120.0;430.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>780</x>
+      <y>230</y>
+      <w>120</w>
+      <h>430</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+if simple user: 
+is on &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;410.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>220</x>
+      <y>410</y>
+      <w>450</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
+is on &gt;</panel_attributes>
+    <additional_attributes>430.0;240.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>670</y>
+      <w>240</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
+is tracked &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>970</x>
+      <y>370</y>
+      <w>210</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+
+&lt; requests</panel_attributes>
+    <additional_attributes>190.0;10.0;10.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>590</x>
+      <y>220</y>
+      <w>140</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+writes &gt;</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>590</x>
+      <y>400</y>
+      <w>180</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+
+is evaluated &gt;</panel_attributes>
+    <additional_attributes>110.0;240.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>1120</x>
+      <y>350</y>
+      <w>146</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+belongs to &gt;</panel_attributes>
+    <additional_attributes>120;30;40;270</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>990</x>
+      <y>210</y>
+      <w>134</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+requests &gt;</panel_attributes>
+    <additional_attributes>110;140;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>870</x>
+      <y>0</y>
+      <w>180</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&gt;&gt;
+a user can 
+be a driver</panel_attributes>
+    <additional_attributes>30;130;60;70;110;50;160;70;140;130</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>910</x>
+      <y>210</y>
+      <w>116</w>
+      <h>450</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+if driver
+drives &gt;</panel_attributes>
+    <additional_attributes>30;430;90;30</additional_attributes>
+  </element>
+</diagram>

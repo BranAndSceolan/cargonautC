@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>770</x>
+      <y>220</y>
+      <w>310</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>User
+--
+_id: mongoose.Types.ObjectId
+name : String
+birthdate : date
+eMail : email (check if valid!)
+password : String
+averageEvalOfRides: float
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>340</y>
+      <w>290</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Vehicle
+--
+_id: mongoose.Types.ObjectId
+type : ENUM
+spaceWidth: NULL/ number #in cm
+spaceHeight: NULL/ number #in cm
+spaceLenght: NULL/ number #in cm
+numberOfSeats: number
+decription/notes: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>710</x>
+      <y>730</y>
+      <w>370</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Ride
+--
+_id: mongoose.Types.ObjectId
+date: date
+from: String
+to: String
+offeredBy: _id: mongoose.Types.ObjectId
+requests: _id: mongoose.Types.ObjectId
+acceptedRequests: _id: mongoose.Types.ObjectId</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>390</y>
+      <w>340</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Evaluation
+--
+_id: mongoose.Types.ObjectId
+result: Number 0-5
+concerningRide: _id: mongoose.Types.ObjectId
+madeBy: _id: mongoose.Types.ObjectId</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1140</x>
+      <y>170</y>
+      <w>250</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Tracking
+--
+_id: mongoose.Types.ObjectId
+trackinStatus: ENUM
+dateLastStatusChange: date</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1160</x>
+      <y>400</y>
+      <w>300</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Request
+--
+by: _id: mongoose.Types.ObjectId
+_id: mongoose.Types.ObjectId
+requestStatus :ENUM
+date: date
+cargo: _id: mongoose.Types.ObjectId[]
+tracking: _id: mongoose.Types.ObjectId</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1140</x>
+      <y>710</y>
+      <w>250</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Cargo
+--
+_id: mongoose.Types.ObjectId
+type: ENUM
+notes: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>260</y>
+      <w>510</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+
+&lt; belongs to</panel_attributes>
+    <additional_attributes>10.0;130.0;490.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>340</y>
+      <w>120</w>
+      <h>410</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+if simple user:
+is on &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;390.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>470</y>
+      <w>450</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
+is on &gt;</panel_attributes>
+    <additional_attributes>430.0;270.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1270</x>
+      <y>270</y>
+      <w>110</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
+is tracked &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1030</x>
+      <y>530</y>
+      <w>160</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+
+&lt; requests</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>690</x>
+      <y>310</y>
+      <w>100</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+writes &gt;</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>690</x>
+      <y>490</y>
+      <w>140</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+is 
+evaluated &gt;</panel_attributes>
+    <additional_attributes>70.0;240.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>1220</x>
+      <y>510</y>
+      <w>146</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+belongs to &gt;</panel_attributes>
+    <additional_attributes>80;30;80;200</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>1050</x>
+      <y>320</y>
+      <w>134</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+requests &gt;</panel_attributes>
+    <additional_attributes>110;80;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>930</x>
+      <y>110</y>
+      <w>160</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&gt;&gt;
+an user can
+be a driver</panel_attributes>
+    <additional_attributes>30;110;30;50;140;50;140;110</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>950</x>
+      <y>320</y>
+      <w>116</w>
+      <h>430</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+if driver
+drives &gt;</panel_attributes>
+    <additional_attributes>50;410;70;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Note</type>
+    <coordinates>
+      <x>1230</x>
+      <y>20</y>
+      <w>160</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Maybe save track-
+ing object directly in
+Request object?</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

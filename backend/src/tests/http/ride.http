@@ -1,0 +1,56 @@
+###
+POST http://localhost:8008/ride/create
+Content-Type: application/json
+sessionid: 1111
+cuid: system
+
+{
+"date": "1-12-2022",
+"origin": "munich",
+"destination": "berlin",
+"title": "nice ride",
+  "description": "We go from munich to berlin!",
+  "numberOfFreeSeats": 4,
+  "price": 20,
+  "user": "620cbeaecc90432d95b598a0",
+"pendingReqs" : [],
+"accReqs": []
+}
+
+###
+POST http://localhost:8008/ride/update/62b6e878cc7d681b5e54d449
+Content-Type: application/json
+sessionid: 1111
+cuid: system
+
+{
+  "date": "1-12-2022",
+  "origin": "munich",
+  "destination": "berlin",
+  "title": "from munich to berlin",
+  "description": "We drive from unich to berlin",
+  "numberOfFreeSeats": 3,
+  "price": 20,
+  "user": "620cbeaecc90432d95b598a",
+  "pendingReqs" : ["620cbeaecc90432d95b598a0"],
+  "accReqs": []
+}
+
+###
+
+GET http://localhost:8008/ride/getAll
+sessionid: 1111
+cuid: system
+
+###
+
+GET http://localhost:8008/ride/findById/62b6e0f947710726ec73f315
+sessionid: 1111
+cuid: system
+
+###
+
+DELETE http://localhost:8080/ride/delete/62b6e0f947710726ec73f315
+Content-Type: application/json
+sessionid: 1111
+cuid: system
