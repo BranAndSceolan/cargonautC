@@ -13,6 +13,7 @@ import {
     vehicleRouter
 } from "./routes/index"
 import session from "express-session";
+const crypto = require('crypto')
 
 if (!config.get('testWithOutDocker')) {
     const mongo: MongoModule = new MongoModule();
@@ -40,14 +41,26 @@ declare module "express-session" {
 export const app: Application = express();
 app.use(express.urlencoded({extended: false}));
 
-app.use(session({
-    resave: true, // save session even if not modified
-    saveUninitialized: true, // save session even if not used
-    rolling: true, // forces cookie set on every response needed to set expiration
-    secret: Math.random().toString(), // encrypt session-id in cookie using "secret" as modifier
-    name: "cargonaut_cookie", // name of the cookie set is set by the server
-    cookie: {maxAge: 20 * 1000}
-}));
+if (!config.get('disableAuth')) {
+    app.use(session({
+        resave: true, // save session even if not modified
+        saveUninitialized: true, // save session even if not used
+        rolling: true, // forces cookie set on every response needed to set expiration
+        secret: crypto.randomInt(0, 1000000), // encrypt session-id in cookie using "secret" as modifier
+        name: "cargonaut_cookie", // name of the cookie set is set by the server
+        cookie: {maxAge  : 60 * 60 * 1000 }
+    }));
+} else {
+    app.use(session({
+        resave: true, // save session even if not modified
+        saveUninitialized: true, // save session even if not used
+        rolling: true, // forces cookie set on every response needed to set expiration
+        secret: crypto.randomInt(0, 1000000), // encrypt session-id in cookie using "secret" as modifier
+        name: "cargonaut_cookie", // name of the cookie set is set by the server
+        cookie: {secure: true} // Only send cookie using https
+    }));
+}
+
 app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({
