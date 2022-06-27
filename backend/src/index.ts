@@ -49,14 +49,14 @@ app.use(rl.rateLimit({
 }))
 
 if (!config.get('disableAuth')) {
-    app.use(session({
+    app.use(session(csrf({
         resave: false, // save session even if not modified
         saveUninitialized: true, // save session even if not used
         rolling: true, // forces cookie set on every response needed to set expiration
         secret: crypto.randomInt(0, 1000000), // encrypt session-id in cookie using "secret" as modifier
         name: "cargonaut_cookie", // name of the cookie set is set by the server
         cookie: {maxAge  : 60 * 60 * 1000 }
-    }));
+    })))
 } else {
     app.use(session({
         resave: false, // save session even if not modified
