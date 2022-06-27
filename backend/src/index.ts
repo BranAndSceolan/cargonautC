@@ -14,6 +14,7 @@ import {
 } from "./routes/index"
 import session from "express-session";
 const crypto = require('crypto')
+const csrf = require('csrf')
 
 if (!config.get('testWithOutDocker')) {
     const mongo: MongoModule = new MongoModule();
@@ -42,6 +43,7 @@ export const app: Application = express();
 app.use(express.urlencoded({extended: false}));
 
 if (!config.get('disableAuth')) {
+    app.use(csrf({cookie: true}))
     app.use(session({
         resave: true, // save session even if not modified
         saveUninitialized: true, // save session even if not used
@@ -51,6 +53,7 @@ if (!config.get('disableAuth')) {
         cookie: {maxAge  : 60 * 60 * 1000 }
     }));
 } else {
+    app.use(csrf({cookie: true})) // Protect against request forgery
     app.use(session({
         resave: true, // save session even if not modified
         saveUninitialized: true, // save session even if not used
