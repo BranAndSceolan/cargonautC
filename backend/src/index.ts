@@ -49,7 +49,6 @@ app.use(rl.rateLimit({
 }))
 
 if (!config.get('disableAuth')) {
-    app.use(csrf({cookie: true}))
     app.use(session({
         resave: false, // save session even if not modified
         saveUninitialized: true, // save session even if not used
@@ -59,7 +58,6 @@ if (!config.get('disableAuth')) {
         cookie: {maxAge  : 60 * 60 * 1000 }
     }));
 } else {
-    app.use(csrf({cookie: true})) // Protect against request forgery
     app.use(session({
         resave: false, // save session even if not modified
         saveUninitialized: true, // save session even if not used
