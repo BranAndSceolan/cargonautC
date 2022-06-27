@@ -3,7 +3,7 @@ import {Application, Request, Response} from "express";
 import * as rl from "express-rate-limit"
 import * as path from "path";
 import {PORT} from "./config/config.json";
-import cors from 'cors';
+//import cors from 'cors';
 import {MongoModule} from "./modules/mongo/mongo.module";
 import config from "config";
 import {
@@ -41,14 +41,15 @@ declare module "express-session" {
 
 // Boot express
 export const app: Application = express();
-app.use(express.urlencoded({extended: false}));
-app.use(csrf({cookie: true}))
-app.use(rl.rateLimit({
-    windowMs: 60*1000, // 1 minute
-    max: 6
-}))
 
 if (!config.get('disableAuth')) {
+    app.use(express.urlencoded({extended: false}));
+    app.use(csrf({cookie: true}))
+    app.use(rl.rateLimit({
+        windowMs: 60*1000, // 1 minute
+        max: 6
+    }))
+    app.use(csrf({cookie: true}))
     app.use(session({
         resave: false, // save session even if not modified
         saveUninitialized: true, // save session even if not used
@@ -58,6 +59,13 @@ if (!config.get('disableAuth')) {
         cookie: {maxAge  : 60 * 60 * 1000 }
     }))
 } else {
+    app.use(express.urlencoded({extended: false}));
+    app.use(csrf({cookie: true}))
+    app.use(rl.rateLimit({
+        windowMs: 60*1000, // 1 minute
+        max: 6
+    }))
+    app.use(csrf({cookie: true})) // Protect against request forgery
     app.use(session({
         resave: false, // save session even if not modified
         saveUninitialized: true, // save session even if not used
@@ -69,7 +77,7 @@ if (!config.get('disableAuth')) {
 }
 
 app.use(express.json())
-app.use(cors())
+//app.use(cors())
 app.use(express.urlencoded({
     extended: true
 }));
