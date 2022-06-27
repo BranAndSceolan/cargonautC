@@ -56,7 +56,7 @@ if (!config.get('disableAuth')) {
         secret: crypto.randomInt(0, 1000000), // encrypt session-id in cookie using "secret" as modifier
         name: "cargonaut_cookie", // name of the cookie set is set by the server
         cookie: {maxAge  : 60 * 60 * 1000 }
-    }));
+    }))
 } else {
     app.use(session({
         resave: false, // save session even if not modified
@@ -65,7 +65,7 @@ if (!config.get('disableAuth')) {
         secret: crypto.randomInt(0, 1000000), // encrypt session-id in cookie using "secret" as modifier
         name: "cargonaut_cookie", // name of the cookie set is set by the server
         cookie: {secure: true} // Only send cookie using https
-    }));
+    }))
 }
 
 app.use(express.json())
