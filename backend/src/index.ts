@@ -1,5 +1,6 @@
 import express from "express";
 import {Application, Request, Response} from "express";
+import * as rl from "express-rate-limit"
 import * as path from "path";
 import {PORT} from "./config/config.json";
 import cors from 'cors';
@@ -41,11 +42,16 @@ declare module "express-session" {
 // Boot express
 export const app: Application = express();
 app.use(express.urlencoded({extended: false}));
+app.use(csrf({cookie: true}))
+app.use(rl.rateLimit({
+    windowMs: 60*1000, // 1 minute
+    max: 6
+}))
 
 if (!config.get('disableAuth')) {
     app.use(csrf({cookie: true}))
     app.use(session({
-        resave: true, // save session even if not modified
+        resave: false, // save session even if not modified
         saveUninitialized: true, // save session even if not used
         rolling: true, // forces cookie set on every response needed to set expiration
         secret: crypto.randomInt(0, 1000000), // encrypt session-id in cookie using "secret" as modifier
@@ -55,7 +61,7 @@ if (!config.get('disableAuth')) {
 } else {
     app.use(csrf({cookie: true})) // Protect against request forgery
     app.use(session({
-        resave: true, // save session even if not modified
+        resave: false, // save session even if not modified
         saveUninitialized: true, // save session even if not used
         rolling: true, // forces cookie set on every response needed to set expiration
         secret: crypto.randomInt(0, 1000000), // encrypt session-id in cookie using "secret" as modifier
