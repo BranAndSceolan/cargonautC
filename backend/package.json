@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@babel/types": "^7.18.4",
-    "@types/chai": "^4.3.1",
+    "@types/chai": "^4.3.3",
     "@types/express-session": "^1.17.4",
     "@types/node": "^18.0.0",
     "body-parser": "^1.20.0",
