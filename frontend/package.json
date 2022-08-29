@@ -18,7 +18,7 @@
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.29.0",
     "@vue/cli-plugin-eslint": "~5.0.6",
-    "@vue/cli-plugin-router": "~5.0.6",
+    "@vue/cli-plugin-router": "~5.0.8",
     "@vue/cli-plugin-typescript": "~5.0.6",
     "@vue/cli-plugin-unit-mocha": "~5.0.6",
     "@vue/cli-service": "~5.0.6",
